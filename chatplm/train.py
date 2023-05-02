@@ -8,9 +8,10 @@ from tensorflow.keras.layers import Dense, Embedding, GlobalAveragePooling1D
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from sklearn.preprocessing import LabelEncoder
+from helpers.load_data import load_data
 
-with open('intents.json') as file:
-    data = json.load(file)
+
+data = load_data('data')
 
 training_sentences = []
 training_labels = []

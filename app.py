@@ -1,16 +1,28 @@
 import streamlit as st
 from streamlit_chat import message
 from PIL import Image
-import chatplm.infer as cplm_infer
+from chatplm.model import ChatPLM
 
-INTENT_FILE = "chatplm/intents.json"
+INTENTS_PATH = "chatplm/data"
 MODEL_FILE = "chatplm/chat_model"
 TOKENIZER_FILE = "chatplm/tokenizer.pickle"
 LABEL_ENCODER_FILE = "chatplm/label_encoder.pickle"
 
 st.set_page_config(page_title="ChatPLM", page_icon="🤖")
 
-tab1, tab2 = st.tabs(["Chat", "Train"])
+# Initialize model
+
+
+@st.cache(allow_output_mutation=True)
+def load_model():
+    print('loaded model')
+    return ChatPLM(INTENTS_PATH, MODEL_FILE,
+                   TOKENIZER_FILE, LABEL_ENCODER_FILE)
+
+
+model = load_model()
+
+tab1, tab2 = st.tabs(["Chat", "README"])
 
 with tab1:
     # Setting page title and header
@@ -47,8 +59,7 @@ with tab1:
             submit_button = st.form_submit_button(label='Send', type='primary')
 
         if submit_button and user_input:
-            output = cplm_infer.response_from_model(
-                user_input, INTENT_FILE, MODEL_FILE, TOKENIZER_FILE, LABEL_ENCODER_FILE)
+            output = model.response_from_model(user_input)
             st.session_state['past'].append(user_input)
             st.session_state['generated'].append(output)
 
