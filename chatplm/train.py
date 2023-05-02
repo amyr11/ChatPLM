@@ -11,7 +11,7 @@ from sklearn.preprocessing import LabelEncoder
 from helpers.load_data import load_data
 
 
-data = load_data('data')
+data = load_data()
 
 training_sentences = []
 training_labels = []

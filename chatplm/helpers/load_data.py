@@ -1,6 +1,8 @@
 import os
 import json
 
+DIRECTORY = 'chatplm/data'
+
 
 def load_json(directory):
     json_files = []
@@ -25,8 +27,8 @@ def append_intents(intents):
     return all_intents
 
 
-def load_data(directory):
-    json_files = load_json(directory)
+def load_data():
+    json_files = load_json(DIRECTORY)
     intents = [load_intent(f) for f in json_files]
     data = append_intents(intents)
     return data

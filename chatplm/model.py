@@ -3,7 +3,6 @@ import numpy as np
 from tensorflow import keras
 from chatplm.helpers.load_data import load_data
 
-INTENTS_PATH = "chatplm/data"
 MODEL_FILE = "chatplm/chat_model"
 TOKENIZER_FILE = "chatplm/tokenizer.pickle"
 LABEL_ENCODER_FILE = "chatplm/label_encoder.pickle"
@@ -11,7 +10,7 @@ LABEL_ENCODER_FILE = "chatplm/label_encoder.pickle"
 
 class ChatPLM:
     def __init__(self):
-        self.data = load_data(INTENTS_PATH)
+        self.data = load_data()
         # load trained model
         self.model = keras.models.load_model(MODEL_FILE)
 
