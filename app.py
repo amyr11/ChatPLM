@@ -3,11 +3,6 @@ from streamlit_chat import message
 from PIL import Image
 from chatplm.model import ChatPLM
 
-INTENTS_PATH = "chatplm/data"
-MODEL_FILE = "chatplm/chat_model"
-TOKENIZER_FILE = "chatplm/tokenizer.pickle"
-LABEL_ENCODER_FILE = "chatplm/label_encoder.pickle"
-
 st.set_page_config(page_title="ChatPLM", page_icon="🤖")
 
 # Initialize model
@@ -16,8 +11,7 @@ st.set_page_config(page_title="ChatPLM", page_icon="🤖")
 @st.cache(allow_output_mutation=True)
 def load_model():
     print('loaded model')
-    return ChatPLM(INTENTS_PATH, MODEL_FILE,
-                   TOKENIZER_FILE, LABEL_ENCODER_FILE)
+    return ChatPLM()
 
 
 model = load_model()

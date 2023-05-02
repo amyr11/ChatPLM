@@ -3,19 +3,24 @@ import numpy as np
 from tensorflow import keras
 from chatplm.helpers.load_data import load_data
 
+INTENTS_PATH = "chatplm/data"
+MODEL_FILE = "chatplm/chat_model"
+TOKENIZER_FILE = "chatplm/tokenizer.pickle"
+LABEL_ENCODER_FILE = "chatplm/label_encoder.pickle"
+
 
 class ChatPLM:
-    def __init__(self, intents_path, model_file, tokenizer_file, label_encoder_file):
-        self.data = load_data(intents_path)
+    def __init__(self):
+        self.data = load_data(INTENTS_PATH)
         # load trained model
-        self.model = keras.models.load_model(model_file)
+        self.model = keras.models.load_model(MODEL_FILE)
 
         # load tokenizer object
-        with open(tokenizer_file, 'rb') as handle:
+        with open(TOKENIZER_FILE, 'rb') as handle:
             self.tokenizer = pickle.load(handle)
 
         # load label encoder object
-        with open(label_encoder_file, 'rb') as enc:
+        with open(LABEL_ENCODER_FILE, 'rb') as enc:
             self.lbl_encoder = pickle.load(enc)
 
     def response_from_model(self, inp):
