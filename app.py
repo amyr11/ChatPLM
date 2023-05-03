@@ -23,7 +23,7 @@ with tab1:
     with col1:
         st.image(image, width=150)
     with col2:
-        st.markdown("<h1>ChatPLM</h1>", unsafe_allow_html=True)
+        st.markdown("# ChatPLM `preview`", unsafe_allow_html=True)
         st.markdown("<h5>Ask anything about our Pamantasan!</h5>",
                     unsafe_allow_html=True)
 
@@ -54,6 +54,8 @@ with tab1:
             output = model.response_from_model(user_input)
             st.session_state['past'].append(user_input)
             st.session_state['generated'].append(output)
+
+    st.markdown('<p style="color: grey">This version is still under development. The model might answer inaccurately because of limited training data. <a href=#>Become a volunteer!</a></p>', unsafe_allow_html=True)
 
     if st.session_state['generated']:
         with response_container:
