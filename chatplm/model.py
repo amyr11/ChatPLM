@@ -1,11 +1,14 @@
+import os
 import pickle
 import numpy as np
 from tensorflow import keras
 from chatplm.helpers.load_data import load_data
 
-MODEL_FILE = "chatplm/chat_model"
-TOKENIZER_FILE = "chatplm/tokenizer.pickle"
-LABEL_ENCODER_FILE = "chatplm/label_encoder.pickle"
+# Get the directory of the current script
+CURRENT_DIRECTORY = os.path.dirname(os.path.abspath(__file__))
+MODEL_FILE = os.path.join(CURRENT_DIRECTORY, "chat_model")
+TOKENIZER_FILE = os.path.join(CURRENT_DIRECTORY, "tokenizer.pickle")
+LABEL_ENCODER_FILE = os.path.join(CURRENT_DIRECTORY, "label_encoder.pickle")
 
 
 class ChatPLM:

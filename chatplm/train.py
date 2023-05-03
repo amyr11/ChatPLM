@@ -1,4 +1,5 @@
 import pickle
+import os
 import json
 import numpy as np
 import tensorflow as tf
@@ -9,6 +10,9 @@ from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from sklearn.preprocessing import LabelEncoder
 from helpers.load_data import load_training_data, create_tag_response_json, INTENTS_PATH
+
+# Get the directory of the current script
+CURRENT_DIRECTORY = os.path.dirname(os.path.abspath(__file__))
 
 
 data = load_training_data()
@@ -61,15 +65,15 @@ epochs = 500
 history = model.fit(padded_sequences, np.array(training_labels), epochs=epochs)
 
 # to save the trained model
-model.save("chat_model")
+model.save(os.path.join(CURRENT_DIRECTORY, 'chat_model'))
 
 
 # to save the fitted tokenizer
-with open('tokenizer.pickle', 'wb') as handle:
+with open(os.path.join(CURRENT_DIRECTORY, 'tokenizer.pickle'), 'wb') as handle:
     pickle.dump(tokenizer, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
 # to save the fitted label encoder
-with open('label_encoder.pickle', 'wb') as ecn_file:
+with open(os.path.join(CURRENT_DIRECTORY, 'label_encoder.pickle'), 'wb') as ecn_file:
     pickle.dump(lbl_encoder, ecn_file, protocol=pickle.HIGHEST_PROTOCOL)
 
 create_tag_response_json(data, INTENTS_PATH)
