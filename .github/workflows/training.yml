@@ -21,8 +21,6 @@ jobs:
         run: |
           git config --global user.name 'amyr11'
           git config --global user.email 'amyrfrancisco11@gmail.com'
-          git remote set-url origin https://<PAT>:x-oauth-basic@github.com/amyr11/ChatPLM.git
+          git remote set-url origin https://${{ secrets.PUSH_SECRET }}:x-oauth-basic@github.com/amyr11/ChatPLM.git
           git commit -am "(Automated) Re-trained model"
           git push          
-        env:
-          PAT: ${{ secrets.PUSH_SECRET }}
