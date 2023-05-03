@@ -17,13 +17,9 @@ jobs:
         run: pip install -r requirements.txt
       - name: Run train.py script
         run: python chatplm/train.py
-      - name: Configure git
-        run: |
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
-      - name: Commit changes
-        run: |
-          git add .
-          git commit -m "Update files from train.py script"
       - name: Push changes
-        run: git push
+        run: |
+          git config --global user.name 'Github Action'
+          git config --global user.email 'amyrfrancisco11@gmail.com'
+          git commit -am "Automated report"
+          git push
