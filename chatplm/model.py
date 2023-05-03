@@ -32,5 +32,5 @@ class ChatPLM:
 
         for i in self.data['intents']:
             if i['tag'] == tag:
-                response = np.random.choice(i['responses'])
+                response = i['response']
                 return response
