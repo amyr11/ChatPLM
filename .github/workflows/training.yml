@@ -9,6 +9,12 @@ jobs:
   run-script:
     runs-on: ubuntu-latest
     steps:
+      - name: Set Timezone
+        uses: szenius/set-timezone@v1.2
+        with:
+          timezoneLinux: 'Asia/Manila'
+          timezoneMacos: 'Asia/Manila'
+          timezoneWindows: 'Philippine Standard Time'
       - name: Checkout repository
         uses: actions/checkout@v3
       - name: Set up Python
