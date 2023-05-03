@@ -25,3 +25,4 @@ jobs:
           git config --global user.email 'amyrfrancisco11@gmail.com'
           git commit -am "(Automated) Re-trained model"
           git remote set-url --push origin https://amyr11:${{ secrets.PUSH_SECRET }}@github.com/amyr11/ChatPLM.git
+          git push
