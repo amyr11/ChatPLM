@@ -1,6 +1,7 @@
 import os
 import json
 import pandas as pd
+from datetime import datetime
 
 # Get the directory of the current script
 CURRENT_DIRECTORY = os.path.dirname(os.path.abspath(__file__))
@@ -66,7 +67,8 @@ def create_tag_response_json(intents_data, output_file_path):
         intents.append(intent)
 
     # Create a new dictionary with the intents list
-    result = {'intents': intents}
+    result = {'intents': intents,
+              'date': datetime.now().strftime("%B %d, %Y %I:%M %p")}
 
     # Write the result dictionary to a new JSON file
     with open(output_file_path, 'w') as f:

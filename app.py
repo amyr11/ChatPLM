@@ -2,6 +2,7 @@ import streamlit as st
 from streamlit_chat import message
 from PIL import Image
 from chatplm.model import ChatPLM
+from chatplm.helpers.load_data import load_data
 
 st.set_page_config(page_title="ChatPLM", page_icon="🤖")
 
@@ -56,6 +57,8 @@ with tab1:
             st.session_state['generated'].append(output)
 
     st.markdown('<p style="color: grey">This version is still under development. The model might answer inaccurately because of limited training data. <a href=#>Become a volunteer!</a></p>', unsafe_allow_html=True)
+    st.markdown(
+        f'<p style="color: grey; font-size: 12px">Training data updated on {load_data()["date"]}</p>', unsafe_allow_html=True)
 
     if st.session_state['generated']:
         with response_container:
