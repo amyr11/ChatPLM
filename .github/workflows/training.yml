@@ -18,10 +18,11 @@ jobs:
       - name: Run train.py script
         run: python chatplm/train.py
       - name: Push changes
+        env:
+          PAT: ${{ secrets.PUSH_SECRET }}
         run: |
           git config --global user.name 'amyr11'
           git config --global user.email 'amyrfrancisco11@gmail.com'
+          git remote set-url origin https://<PAT>:x-oauth-basic@github.com/amyr11/ChatPLM.git
           git commit -am "(Automated) Re-trained model"
-          git push
-        env:
-          PAT: ${{ secrets.PUSH_SECRET }}
+          git push          
