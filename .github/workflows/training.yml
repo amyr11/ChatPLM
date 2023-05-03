@@ -19,7 +19,9 @@ jobs:
         run: python chatplm/train.py
       - name: Push changes
         run: |
-          git config --global user.name 'Github Action'
+          git config --global user.name 'amyr11'
           git config --global user.email 'amyrfrancisco11@gmail.com'
-          git commit -am "Automated report"
+          git commit -am "(Automated) Re-trained model"
           git push
+        env:
+          PAT: ${{ secrets.PUSH_SECRET }}
