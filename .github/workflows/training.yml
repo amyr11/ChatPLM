@@ -1,0 +1,19 @@
+name: Run train.py on changes to chatplm_brain.xlsx
+on:
+  push:
+    paths:
+      - 'chatplm/data/chatplm_brain.xlsx'
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9.9
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Run train.py script
+        run: python chatplm/train.py
