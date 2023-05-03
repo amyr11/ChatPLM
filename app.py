@@ -63,3 +63,34 @@ with tab1:
                 message(st.session_state["generated"][i], key=str(i))
                 feedback = st.markdown(
                     "Something's wrong? <a href=#>Give feedback.</a>", unsafe_allow_html=True)
+
+with tab2:
+    st.write('# What is ChatPLM? 🤔')
+    st.write(
+        'ChatPLM is a chatbot trained on PLM data for university-specific information queries.')
+
+    st.write('# How does ChatPLM work? 🛠')
+    st.write('ChatPLM consists of a neural network trained on PLM-specific data to identify the patterns of user prompts and provide the appropriate response. Using NLP techniques, ChatPLM is able to understand the context of the user\'s prompts.')
+
+    st.write('## Natural Language Processing (NLP) 🗣')
+    st.write('Natural Language Processing (NLP) is a field of artificial intelligence that deals with the interaction between computers and humans using the natural language. It is a branch of artificial intelligence that has many important applications in the modern world. NLP is used in search engines, email filters, voice recognition software, and many other applications.')
+
+    st.write('## What on 🌏 is a neural network? 🤖')
+    st.write('A neural network is a machine learning model that is inspired by the human brain. It is composed of layers of neurons that are connected to each other. Each neuron is a mathematical function that takes in an input and produces an output. The output of one neuron is the input of another neuron. The output of the last layer is the output of the neural network.')
+    st.image(
+        'https://miro.medium.com/v2/resize:fit:1199/1*N8UXaiUKWurFLdmEhEHiWg.jpeg')
+
+    st.write('## ChatPLM is not a generative AI ❗️')
+    st.write('Unlike ChatGPT, ChatPLM is not a generative AI. It does not generate responses from scratch. Instead, it uses a pre-trained language model to select responses from saved data based on the user\'s input. This prevents hallucination and ensures that the responses are relevant to the user\'s input.')
+
+    st.write('# Technology used 💻')
+    st.write('ChatPLM is built using the following technologies:')
+
+    techs = ["![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)",
+             "![TensorFlow](https://img.shields.io/badge/TensorFlow-%23FF6F00.svg?style=for-the-badge&logo=TensorFlow&logoColor=white)",
+             "![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)"]
+
+    st.markdown(" ".join(techs))
+
+    st.write('# Github Repository 🔗')
+    st.write('https://github.com/amyr11/ChatPLM')
