@@ -12,8 +12,8 @@ LABEL_ENCODER_FILE = os.path.join(CURRENT_DIRECTORY, "label_encoder.pickle")
 
 
 class ChatPLM:
-    def __init__(self):
-        self.data = load_data()
+    def __init__(self, data):
+        self.data = data
         # load trained model
         self.model = keras.models.load_model(MODEL_FILE)
 
