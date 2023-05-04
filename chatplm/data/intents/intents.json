@@ -1,6 +1,14 @@
 {
     "intents": [
         {
+            "tag": "who_are_you",
+            "response": "Hi, haribon! I am ChatPLM, a simple AI trained to answer your PLM-related questions. Ask me anything about PLM and I'll try my best to answer it."
+        },
+        {
+            "tag": "who_created",
+            "response": "I am developed by a group of passionate Computer Science students from PLM and maintained by a lot of student volunteers!"
+        },
+        {
             "tag": "courses_offered",
             "response": "PLM offers a variety of undergraduate and graduate programs, including courses in Business Administration, Education, Engineering, Law, Medicine, Nursing, Social Sciences, and more."
         },
@@ -21,13 +29,13 @@
             "response": "PLM was established in 1965 as a college under the administration of the City of Manila. It became a university in 2001 and is now considered one of the leading universities in the Philippines."
         },
         {
-            "tag": "campus",
-            "response": "PLM's main campus is located in the heart of Manila, near several major landmarks and attractions. The campus is well-maintained and features modern facilities, including lecture halls, laboratories, libraries, and sports facilities."
+            "tag": "location",
+            "response": "PLM's main campus is located in General Luna, corner Muralla St, Intramuros, Manila, 1002 Metro Manila."
         },
         {
             "tag": "student_orgs",
             "response": "I currently don't have a list of all student organizations in PLM as I still have no data about it. Kindly give a feedback to improve my knowledge base!"
         }
     ],
-    "date": "May 04, 2023 07:33 PM"
+    "date": "May 05, 2023 02:06 AM"
 }

@@ -61,7 +61,7 @@ model.compile(loss='sparse_categorical_crossentropy',
 
 model.summary()
 
-epochs = 500
+epochs = 400
 history = model.fit(padded_sequences, np.array(training_labels), epochs=epochs)
 
 # to save the trained model
