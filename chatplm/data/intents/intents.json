@@ -31,7 +31,15 @@
         {
             "tag": "what_icto",
             "response": "ICTO is the Information and Communications Technology Office of PLM located at Gusaling Villegas (GV)."
+        },
+        {
+            "tag": "cet_courses",
+            "response": "Computer engineering, Computer science, etc."
+        },
+        {
+            "tag": "what_cet",
+            "response": "CET means College of Engineering and Technology"
         }
     ],
-    "date": "May 04, 2023 03:12 AM"
+    "date": "May 04, 2023 06:56 PM"
 }
