@@ -2,11 +2,7 @@
     "intents": [
         {
             "tag": "who_are_you",
-            "response": "Hi, haribon! I am ChatPLM, a simple AI trained to answer your PLM-related questions. Ask me anything about PLM and I'll try my best to answer it."
-        },
-        {
-            "tag": "who_created",
-            "response": "I am developed by a group of passionate Computer Science students from PLM and maintained by a lot of student volunteers!"
+            "response": "Hi, haribon! I am ChatPLM, a simple AI trained to answer your PLM-related questions. \n\nI am developed by a group of passionate Computer Science students from PLM and maintained by a lot of student volunteers.\n\nAsk me anything about PLM and I'll try my best to answer it!"
         },
         {
             "tag": "courses_offered",
@@ -37,5 +33,5 @@
             "response": "I currently don't have a list of all student organizations in PLM as I still have no data about it. Kindly give a feedback to improve my knowledge base!"
         }
     ],
-    "date": "May 05, 2023 02:20 AM"
+    "date": "May 05, 2023 03:42 PM"
 }
