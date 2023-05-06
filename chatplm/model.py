@@ -10,6 +10,7 @@ MODEL_FILE = os.path.join(CURRENT_DIRECTORY, "chat_model")
 TOKENIZER_FILE = os.path.join(CURRENT_DIRECTORY, "tokenizer.pickle")
 LABEL_ENCODER_FILE = os.path.join(CURRENT_DIRECTORY, "label_encoder.pickle")
 
+CONFIDENCE_THRESHOLD = 0.8
 LOW_CONFIDENCE_RESPONSE = "Sorry, I'm still learning and only understand PLM-related topics. It's also possible that your question is not yet added to my training data or I misunderstood it. Try asking your question in a different way or submit a correction instead."
 
 
@@ -35,7 +36,7 @@ class ChatPLM:
             self.tokenizer.texts_to_sequences([inp]), truncating='post', maxlen=max_len))
         # return "i don't understand" when the model is not confident enough
         confidence = np.max(result)
-        if confidence < 0.7:
+        if confidence < CONFIDENCE_THRESHOLD:
             return LOW_CONFIDENCE_RESPONSE, confidence
         tag = self.lbl_encoder.inverse_transform([np.argmax(result)])
 
