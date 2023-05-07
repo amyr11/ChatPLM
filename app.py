@@ -1,29 +1,27 @@
+import requests
 import streamlit as st
+import urllib.parse
 from streamlit_chat import message
 from PIL import Image
-from chatplm.model import ChatPLM
-from chatplm.helpers.load_data import load_data
 
 st.set_page_config(page_title="ChatPLM", page_icon="🤖")
 
-
-@st.cache_data
-def load_json():
-    return load_data()
-
-
-data = load_json()
-
-
-@st.cache_resource
-def load_model():
-    print('loaded model')
-    return ChatPLM(data)
-
-
-model = load_model()
-
 tab1, tab2 = st.tabs(["Chat", "README"])
+
+API_URL = f"https://chatplm-api.onrender.com"
+
+
+def get_model_response(prompt):
+    prompt_encoded = urllib.parse.quote(prompt)
+    response = requests.get(API_URL + '/chat/' + prompt_encoded)
+    response_json = response.json()
+    return response_json['output'], response_json['confidence']
+
+
+def get_model_metadata():
+    response = requests.get(API_URL + '/metadata')
+    return response.json()
+
 
 with tab1:
     # Setting page title and header
@@ -60,14 +58,14 @@ with tab1:
             submit_button = st.form_submit_button(label='Send', type='primary')
 
         if submit_button and user_input:
-            output, confidence = model.response_from_model(user_input)
+            output, confidence = get_model_response(user_input)
             st.session_state['past'].append(user_input)
             st.session_state['generated'].append(
                 {'output': output, 'confidence': confidence})
 
     st.markdown('<p style="color: grey">This version is still under development. The model might answer inaccurately because of limited training data. <a href=#>Submit a correction</a> or <a href=#>become a volunteer!</a></p>', unsafe_allow_html=True)
     st.markdown(
-        f'<p style="color: grey; font-size: 12px">Training data updated on {data["date"]}</p>', unsafe_allow_html=True)
+        f'<p style="color: grey; font-size: 12px">Training data updated on {get_model_metadata()["trn_updated"]}</p>', unsafe_allow_html=True)
 
     if st.session_state['generated']:
         with response_container:
