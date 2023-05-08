@@ -63,7 +63,7 @@ with tab1:
             st.session_state['generated'].append(
                 {'output': output, 'confidence': confidence})
 
-    st.markdown('<p style="color: grey">This version is still under development. The model might answer inaccurately because of limited training data. <a href=#>Submit a correction</a> or <a href=#>become a volunteer!</a></p>', unsafe_allow_html=True)
+    st.markdown('<p style="color: grey">This version is still under development. The model might answer inaccurately because of limited training data. <a href=#>Become a volunteer!</a></p>', unsafe_allow_html=True)
     st.markdown(
         f'<p style="color: grey; font-size: 12px">Training data updated on {get_model_metadata()["trn_updated"]}</p>', unsafe_allow_html=True)
 
@@ -75,7 +75,7 @@ with tab1:
                 message(st.session_state["generated"][i]['output'], key=str(i))
                 confidence = f'{round(st.session_state["generated"][i]["confidence"] * 100, 1)}%'
                 st.markdown(
-                    f'<p style="color:grey; font-size:12px"> Confidence: {confidence}', unsafe_allow_html=True)
+                    f'<p style="color: grey; font-size: 12px; margin-left: 67px; margin-top: -15px">Confidence: {confidence}</p>', unsafe_allow_html=True)
 
 with tab2:
     st.write('# What is ChatPLM? 🤔')
