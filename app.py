@@ -23,6 +23,8 @@ def get_model_metadata():
     return response.json()
 
 
+trn_updated = get_model_metadata()["trn_updated"]
+
 with tab1:
     # Setting page title and header
     image = Image.open('assets/chatplm_logo.png')
@@ -65,7 +67,7 @@ with tab1:
 
     st.markdown('<p style="color: grey">This version is still under development. The model might answer inaccurately because of limited training data. <a href=#>Become a volunteer!</a></p>', unsafe_allow_html=True)
     st.markdown(
-        f'<p style="color: grey; font-size: 12px">Training data updated on {get_model_metadata()["trn_updated"]}</p>', unsafe_allow_html=True)
+        f'<p style="color: grey; font-size: 12px">Training data updated on {trn_updated}</p>', unsafe_allow_html=True)
 
     if st.session_state['generated']:
         with response_container:
