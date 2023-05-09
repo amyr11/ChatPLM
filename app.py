@@ -3,6 +3,7 @@ import streamlit as st
 import urllib.parse
 from streamlit_chat import message
 from PIL import Image
+from frontend import feedback_buttons
 
 st.set_page_config(page_title="ChatPLM", page_icon="🤖")
 
@@ -41,6 +42,8 @@ with tab1:
         st.session_state['generated'] = []
     if 'past' not in st.session_state:
         st.session_state['past'] = []
+    if 'feedback' not in st.session_state:
+        st.session_state['feedback'] = []
 
     clear_button = st.button("Clear Conversation", key="clear")
 
@@ -48,6 +51,7 @@ with tab1:
     if clear_button:
         st.session_state['generated'] = []
         st.session_state['past'] = []
+        st.session_state['feedback'] = []
 
     # container for chat history
     response_container = st.container()
@@ -64,6 +68,7 @@ with tab1:
             st.session_state['past'].append(user_input)
             st.session_state['generated'].append(
                 {'output': output, 'confidence': confidence})
+            st.session_state['feedback'].append(False)
 
     st.markdown('<p style="color: grey">This version is still under development. The model might answer inaccurately because of limited training data. <a href=#>Become a volunteer!</a></p>', unsafe_allow_html=True)
     st.markdown(
@@ -76,6 +81,12 @@ with tab1:
                         is_user=True, key=str(i) + '_user')
                 message(st.session_state["generated"][i]['output'], key=str(i))
                 confidence = f'{round(st.session_state["generated"][i]["confidence"] * 100, 1)}%'
+                fb = feedback_buttons(key=str(i) + '_fb')
+                if fb == 'liked' and st.session_state["feedback"][i] == False:
+                    st.session_state["feedback"][i] = True
+                    st.balloons()
+                elif fb == 'disliked' and st.session_state["feedback"][i] == False:
+                    st.session_state["feedback"][i] = True
                 st.markdown(
                     f'<p style="color: grey; font-size: 12px; margin-left: 67px; margin-top: -15px">Confidence: {confidence}</p>', unsafe_allow_html=True)
 

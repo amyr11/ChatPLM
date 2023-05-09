@@ -1,0 +1,26 @@
+body {
+    margin-top: 0;
+    padding: 0;
+    margin-left: 67px;
+}
+
+html {
+    margin-top: 0;
+    padding: 0;
+}
+
+.feedback_button {
+    width: 40px;
+    height: 35px;
+    border-radius: 5px;
+    background-color: transparent;
+    border: 1px solid rgba(134, 134, 134, 0.4);
+}
+
+.feedback_button:hover:enabled {
+    background-color: rgba(255, 179, 0, 0.2);
+}
+
+.feedback_button:disabled {
+    border: none;
+}
