@@ -1,3 +1,4 @@
+import os
 import requests
 import streamlit as st
 import urllib.parse
@@ -10,17 +11,20 @@ st.set_page_config(page_title="ChatPLM", page_icon="🤖")
 tab1, tab2 = st.tabs(["Chat", "README"])
 
 API_URL = f"https://chatplm-api.onrender.com"
+API_KEY = st.secrets["API_KEY"]
 
 
 def get_model_response(prompt):
     prompt_encoded = urllib.parse.quote(prompt)
-    response = requests.get(API_URL + '/chat/' + prompt_encoded)
+    response = requests.get(
+        API_URL + '/chat', params={'prompt': prompt_encoded}, headers={'api-key': API_KEY})
     response_json = response.json()
     return response_json['output'], response_json['confidence']
 
 
 def get_model_metadata():
-    response = requests.get(API_URL + '/metadata')
+    response = requests.get(API_URL + '/metadata',
+                            headers={'api-key': API_KEY})
     return response.json()
 
 
