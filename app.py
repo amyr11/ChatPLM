@@ -15,9 +15,8 @@ API_KEY = st.secrets["API_KEY"]
 
 
 def get_model_response(prompt):
-    prompt_encoded = urllib.parse.quote(prompt)
     response = requests.get(
-        API_URL + '/chat', params={'prompt': prompt_encoded}, headers={'api-key': API_KEY})
+        API_URL + '/chat', params={'prompt': prompt}, headers={'api-key': API_KEY})
     response_json = response.json()
     return response_json['output'], response_json['confidence']
 
